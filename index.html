@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--This style sheet is taken from  https://www.w3schools.com/howto/howto_js_tabs.asp>--> 
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <title>amush088 Groceries</title>
+</head>
+
+<body>
+    <div class = "name">
+        <h1>Mush-Mart Groceries</h1>
+    </div>
+
+<!-- Tab links, each one with an onclick event associated with it 
+<div class="tab">
+  <button class="tablinks" onclick="openInfo(event, 'Client')">Client</button>
+  <button class="tablinks" onclick="openInfo(event, 'Products')">Products</button>
+  <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
+</div>
+
+
+<!- Tab content 
+<div id="Client" class="tabcontent">-->
+<button class="accordion" style="font-weight: bold;">Client</button>
+<div class="panel">
+    <h3>Client Information</h3>
+    <p>Tell us a bit about you.</p>
+      Please Choose a Category based on your Diet:
+      <br>
+      <br>
+      <!-- <select id="dietSelect" name="dietSelect" onchange="populateListProductChoices(this.id, 'displayProduct')">
+        <option value=""></option>
+        <option value="Vegetarian">Vegetarian</option>
+        <option value="GlutenFree">GlutenFree</option>
+        <option value="GlutenFree&Vegetarian">GlutenFree&Vegetarian</option>
+        <option value="NutFree">nutFree</option>
+        <option value="LactoseFree">lactoseFree</option>
+        <option value="Organic">Organic</option>
+        <option value="None">None</option>
+      </select>-->
+    <input type="checkbox" id = "Vegetarian" name="Preference" value="Vegetarian" onclick="populateListProductChoices(this.id, 'displayProduct')">
+      <label for="vegetarian">Vegetarian</label><br>
+    <input type="checkbox" id = "GlutenFree" name="Preference" value="GlutenFree" onclick="populateListProductChoices(this.id, 'displayProduct')">
+      <label for="glutenFree">Gluten Free</label><br>
+    <input type="checkbox" id = "LactoseFree" name="Preference" value="LactoseFree" onclick="populateListProductChoices(this.id, 'displayProduct')">
+      <label for="lactoseFree">Lactose Free</label><br>
+    <input type="checkbox" id = "NutFree" name="Preference" value="NutFree" onclick="populateListProductChoices(this.id, 'displayProduct')">
+      <label for="nutFree">Nut Free</label><br>
+    <input type="checkbox" id = "isOrganic" name="Preference" value="Organic" onclick="populateListProductChoices(this.id, 'displayProduct')">
+      <label for="organic">Organic</label><br>
+    <input type="checkbox" id = "none" name="Preference" value="none">
+      <label for="none">None</label><br>
+  <!--<h3>You can Select one of the Categories to narrow down the search</h3>
+        <input type="radio" name="categorization" value="fruit"> Fruits <br>
+        <input type="radio" name="categorization" value="vegetable"> Vegetables <br>
+        <input type="radio" name="categorization" value="dairy"> Dairy Products <br>
+        <input type="radio" name="categorization" value="beverages"> Beverages <br>
+        <input type="radio" name="categorization" value="meat"> Meat Products <br>
+        <input type="radio" name="categorization" value="noAdditional" checked="checked"> No Additional Filter <br>-->
+    <br>
+    </div>
+  
+  <!--<div id="Products" class="tabcontent">-->
+  <button class="accordion" style="font-weight: bold;">Products</button>
+  <div class="panel">
+    <h3>Your targeted products</h3>
+    <p>We preselected products based on your diet restrictions.</p>
+    <br>
+    <p>Categorize your groceries by selecting one of the following presets:</p>
+    <input type="radio" id = "isFruit" name="Category" value="Fruit" onclick="selectFruit(this, 'displayProduct')">
+      <label for="fruit">Fruit Only</label><br>
+    <input type="radio" id = "isVegetable" name="Category" value="Vegetable" onclick="selectVegetable(this, 'displayProduct')">
+      <label for="vegetable">Vegetable Only</label><br>
+    <input type="radio" id = "isMeat" name="Category" value="Meat" onclick="selectMeat(this, 'displayProduct')">
+      <label for="meat">Meat Product Only</label><br>
+    <input type="radio" id = "isDairy" name="Category" value="Dairy" onclick="selectDairy(this, 'displayProduct')">
+      <label for="dairy">Dairy Product Only</label><br>
+    <input type="radio" id = "isBeverage" name="Category" value="Beverages" onclick="selectBeverage(this, 'displayProduct')">
+      <label for="beverages">Beverages Only</label><br>
+     <input type="radio" id = "noAdditional" name="Category" value="noAdditional" checked="checked">
+      <label for="noAdditional">No additional filter</label><br>
+    <!--<input type="radio" id = "fruit" name="categorization" value="fruit" onclick="selectFruit(this, 'displayProduct')">
+      <label for="fruit">Fruit Only</label><br>
+    <input type="radio" id = "isOrganic" name="organic" value="Organic" onclick="selectOrganic(this, 'displayProduct')">
+      <label for="organic">Vegetable Only</label><br>
+    <input type="radio" id = "isOrganic" name="organic" value="Organic" onclick="selectOrganic(this, 'displayProduct')">
+      <label for="organic">Meat Only</label><br>
+    <input type="radio" id = "isOrganic" name="organic" value="Organic" onclick="selectOrganic(this, 'displayProduct')">
+      <label for="organic">Beverages Only</label><br>
+    <input type="radio" id = "isOrganic" name="organic" value="Organic" onclick="selectOrganic(this, 'displayProduct')">
+      <label for="organic">No additional filter</label><br>-->
+      <br>
+      <br>
+       Select item(s) to buy:
+       <div id="displayProduct"></div>
+       <br>
+       <button id="addCart" type="button" class="block" onclick="selectedItems()">
+          Add selected items to cart.
+      </button>
+      <br>
+      <br>
+      <br>
+  </div>
+  
+  <!--<div id="Cart" class="tabcontent">-->
+<button class="accordion" style="font-weight: bold;">Cart</button>
+<div class="panel">
+    <h3>Cart</h3>
+    <p>Here is your cart.</p>
+    <div id="displayCart"></div>
+  </div>
+  
+    <footer>
+        <p style="font-weight: bold;">Website Desgined By: <a>amush088</a>
+        </p>
+    </footer>
+
+  <script src="scripts/groceries.js"></script>
+  <script src="scripts/main.js"></script>
+  
+  </body>
+  </html>
